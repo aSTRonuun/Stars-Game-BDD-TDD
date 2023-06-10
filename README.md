@@ -5,22 +5,22 @@
 <table>
 <tbody>
 <tr>
-<td>
+<td style="text-align: left;"> 
 <p><span style="font-weight: 400;">Card(story name)</span></p>
 </td>
-<td>
+<td style="text-align: left;">
 <p><span style="font-weight: 400;">Conversation</span></p>
 <p><span style="font-weight: 400;">(data there you will need)</span></p>
 </td>
-<td>
+<td style="text-align: left;">
 <p><span style="font-weight: 400;">Confirmation (scenarios)</span></p>
 </td>
 </tr>
 <tr>
 <td>
-<p><span style="font-weight: 400;">Positioning of ships:</span></p>
-<br />
-<p><span style="font-weight: 400;">The system should place ships on the board randomly</span></p>
+<span style="font-weight: 400;">Positioning of ships:</p>
+<br>
+<span style="font-weight: 400;">The system should place ships on the board randomly</span>
 </td>
 <td>
 <p><span style="font-weight: 400;">Cell info:</span></p>
@@ -318,3 +318,28 @@
 </tbody>
 </table>
 <p>&nbsp;</p>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        color: #588c7e;
+        font-family: monospace;
+        font-size: 25px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #588c7e;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+
+    td {
+        align-items: left;
+        vertical-align: top;
+    }
+</style>
