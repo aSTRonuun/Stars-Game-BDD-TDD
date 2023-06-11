@@ -2,7 +2,14 @@
 <p><span style="font-weight: 400;">BDD e TDD</span></p>
 <p><strong>Students:</strong><span style="font-weight: 400;">Vitor Manoel Alves da Silva and Rodrigo Moraes de S&aacute; Teles</span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">Implemented Scenarios: ✅</span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">Not Implemented: ❌</span></p>
 <p>&nbsp;</p>
-<table>
+<table style="
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+    text-align: left;
+    vertical-align: top;
+">
 <tbody>
 <tr>
 <td style="text-align: left;"> 
@@ -16,8 +23,12 @@
 <p><span style="font-weight: 400;">Confirmation (scenarios)</span></p>
 </td>
 </tr>
-<tr>
-<td>
+<tr style="text-align: left;
+    width: 20%;
+    vertical-align: top;">
+<td style="text-align: left;
+    width: 20%;
+    vertical-align: top;">
 <span style="font-weight: 400;">Positioning of ships:</p>
 <br>
 <span style="font-weight: 400;">The system should place ships on the board randomly</span>
@@ -88,8 +99,12 @@
 <p><span style="font-weight: 400;">Unable to add ship in a cell</span></p>
 </td>
 </tr>
-<tr>
-<td>
+<tr style="text-align: left;
+    width: 20%;
+    vertical-align: top;">
+<td style="text-align: left;
+    width: 20%;
+    vertical-align: top;">
 <p><span style="font-weight: 400;">Choice of trigger cell:</span></p>
 <br /><br />
 <p><span style="font-weight: 400;">Me as a player I can shoot the opponent player</span></p>
@@ -149,8 +164,12 @@
 <p><span style="font-weight: 400;">The player must choose a cell within the grid to fire</span></p>
 <br /><br /></td>
 </tr>
-<tr>
-<td>
+<tr style="text-align: left;
+    width: 20%;
+    vertical-align: top;">
+<td style="text-align: left;
+    width: 20%;
+    vertical-align: top;">
 <p><span style="font-weight: 400;">name choice</span></p>
 <br />
 <p><span style="font-weight: 400;">I as a player want to choose my name to play the game</span></p>
@@ -201,8 +220,12 @@
 <p><span style="font-weight: 400;">The game asks me to type a name again and that it is within the character limit</span></p>
 <br /><br /></td>
 </tr>
-<tr>
-<td>
+<tr style="text-align: left;
+    width: 20%;
+    vertical-align: top;">
+<td style="text-align: left;
+    width: 20%;
+    vertical-align: top;">
 <p><span style="font-weight: 400;">win score</span></p>
 <br />
 <p><span style="font-weight: 400;">I how to play can I earn points when I hit a ship or part of it</span></p>
@@ -282,8 +305,12 @@
 <p><span style="font-weight: 400;">The player must spend 1 ammo</span></p>
 </td>
 </tr>
-<tr>
-<td>
+<tr style="text-align: left;
+    width: 20%;
+    vertical-align: top;">
+<td style="text-align: left;
+    width: 20%;
+    vertical-align: top;">
 <p><span style="font-weight: 400;">End of the game</span></p>
 <br />
 <p><span style="font-weight: 400;">I as a player can win or lose the game</span></p>
@@ -318,28 +345,3 @@
 </tbody>
 </table>
 <p>&nbsp;</p>
-
-<style>
-    table {
-        border-collapse: collapse;
-        width: 100%;
-        color: #588c7e;
-        font-family: monospace;
-        font-size: 25px;
-        text-align: left;
-    }
-
-    th {
-        background-color: #588c7e;
-        color: white;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f2f2f2
-    }
-
-    td {
-        align-items: left;
-        vertical-align: top;
-    }
-</style>
