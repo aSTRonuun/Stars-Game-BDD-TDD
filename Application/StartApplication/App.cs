@@ -25,7 +25,7 @@ namespace Application.StartApplication
                                             *** Welcome to the Star Wars Game! ***
                                        (Use the arrows key to cycle in the options)
 ";
-            string[] options = {"Play", "Credits", "Exit" };
+            string[] options = {"Play", "Credits", "Explore Starships", "Exit" };
             var mainMenu = new Menu(prompt, options);
             var selectedIndex = mainMenu.Run();
 
