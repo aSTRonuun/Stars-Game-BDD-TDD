@@ -1,18 +1,28 @@
-﻿using Application.MenuApplication;
+﻿using Application.ExploreStarshipsApplication;
+using Application.MenuApplication;
 using Application.PlayApplication;
+using Infrastructure.StarshipInformationsServiceInfra;
+using Infrastructure.StarshipInformationsServiceInfra.Port;
 using static System.Console;
 
 namespace Application.StartApplication
 {
     public class App
     {
-        public void Start()
+        private ExploreStarships _exploreStarships;
+
+        public App(IStarshipInformationService starshipInformationService)
         {
-            
-            RunMainMenu();
+            // Instancie a classe ExploreStarships passando a implementação de IStarshipInformationService
+            _exploreStarships = new ExploreStarships(starshipInformationService);
         }
 
-        private void RunMainMenu()
+        public async Task Start()
+        {
+            await RunMainMenu();
+        }
+
+        private async Task RunMainMenu()
         {
             var prompt = @"
      _______.___________.    ___      .______         ____    __    ____  ___      .______          _______.
@@ -37,7 +47,10 @@ namespace Application.StartApplication
                 case 1:
                     DisplayAboutCredisInfo();
                     break;
-                case 2:
+                case 2: 
+                    await RunExploreStarships();
+                    break;
+                case 3:
                     ExitGame();
                     break;
                 default:
@@ -72,6 +85,12 @@ namespace Application.StartApplication
                 WriteLine("\n Press space to back to Main Menu");
             } while (ReadKey(true).Key != ConsoleKey.Spacebar);
             RunMainMenu();
+        }
+
+        private async Task RunExploreStarships()
+        {
+            await _exploreStarships.Start();
+            return;
         }
     }
     
