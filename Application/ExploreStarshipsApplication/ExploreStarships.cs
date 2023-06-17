@@ -41,20 +41,20 @@ namespace Application.ExploreStarshipsApplication
             switch (selectedIndex)
             {
                 case 0:
-                    var startshipInformations = await _starshipInformationService.GetBydId((int)StarshipEnum.Star_Destroyer);
-                    Console.WriteLine(ConcatInformations(startshipInformations));
+                    var startshipInformations = await GetInformations(StarshipEnum.Death_Star);
+                    Console.WriteLine(startshipInformations);
                     break;
                 case 1:
-                    var startshipInformations1 = await _starshipInformationService.GetBydId((int)StarshipEnum.Death_Star);
-                    Console.WriteLine(ConcatInformations(startshipInformations1));
+                    var startshipInformations1 = await GetInformations(StarshipEnum.Death_Star);
+                    Console.WriteLine(startshipInformations1);
                     break;
                 case 2:
-                    var startshipInformations2 = await _starshipInformationService.GetBydId((int)StarshipEnum.Millennium_Falcon);
-                    Console.WriteLine(ConcatInformations(startshipInformations2));
+                    var startshipInformations2 = await GetInformations(StarshipEnum.Death_Star);
+                    Console.WriteLine(startshipInformations2);
                     break;
                 case 3:
-                    var startshipInformations3 = await _starshipInformationService.GetBydId((int)StarshipEnum.Executor);
-                    Console.WriteLine(ConcatInformations(startshipInformations3));
+                    var startshipInformations3 = await GetInformations(StarshipEnum.Death_Star);
+                    Console.WriteLine(startshipInformations3);
                     break;
                 default:
                     break;
@@ -62,7 +62,19 @@ namespace Application.ExploreStarshipsApplication
             return;
         }
 
-        public string ConcatInformations(StarshipsInformations startshipInformation)
+        public async Task<string> GetInformations(StarshipEnum starshipEnum)
+        {
+            var result = await _starshipInformationService.GetBydId((int) starshipEnum);
+
+            if (result is null) return "Não foi possível resgatar as informações, tente novamente!";
+
+            var resumeInformations = ConcatInformations(result);
+
+            return resumeInformations;
+        }
+
+
+        private string ConcatInformations(StarshipsInformations startshipInformation)
         {
             var buffer = new StringBuilder();
 

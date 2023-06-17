@@ -13,8 +13,6 @@ IHost _host = Host.CreateDefaultBuilder().ConfigureServices(
 
 var service = _host.Services.GetRequiredService<IStarshipInformationService>();
 
-await service.GetBydId(9);
-
 var app = new App(service);
 
 await app.Start();
