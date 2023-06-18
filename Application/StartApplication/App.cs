@@ -45,7 +45,7 @@ namespace Application.StartApplication
                     RunFirstChoice();
                     break;
                 case 1:
-                    DisplayAboutCredisInfo();
+                    await DisplayAboutCredisInfo();
                     break;
                 case 2: 
                     await RunExploreStarships();
@@ -71,7 +71,7 @@ namespace Application.StartApplication
             play.Start();
         }
 
-        private void DisplayAboutCredisInfo()
+        private async Task DisplayAboutCredisInfo()
         {
             do {
                 Clear();
@@ -84,13 +84,13 @@ namespace Application.StartApplication
                 
                 WriteLine("\n Press space to back to Main Menu");
             } while (ReadKey(true).Key != ConsoleKey.Spacebar);
-            RunMainMenu();
+            await RunMainMenu();
         }
 
         private async Task RunExploreStarships()
         {
             await _exploreStarships.Start();
-            return;
+            await RunMainMenu();
         }
     }
     

@@ -11,6 +11,6 @@
         public string Passengers { get; set; }
         public string Max_atmosphering_speed { get; set; }
         public string Cargo_capacity { get; set; }
-        public int qtdFamousPilots { get; set; }
+        
     }
 }

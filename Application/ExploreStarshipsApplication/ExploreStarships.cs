@@ -19,18 +19,20 @@ namespace Application.ExploreStarshipsApplication
         public async Task Start()
         {
             await RunExploreStartShip();
-            return;
         }
 
         private async Task RunExploreStartShip()
         {
             Clear();
-            await ChooseStarship();
-            ExitGame();
+            while (true)
+            {
+                var result = await ChooseStarship();
+                if (!result) break;
+            }
             return;
         }
 
-        private async Task ChooseStarship()
+        private async Task<bool> ChooseStarship()
         {
             var prompt = "Chosse starship to see informations: \n" +
                      "Press the arrows key to cycle in the options";
@@ -41,7 +43,7 @@ namespace Application.ExploreStarshipsApplication
             switch (selectedIndex)
             {
                 case 0:
-                    var startshipInformations = await GetInformations(StarshipEnum.Death_Star);
+                    var startshipInformations = await GetInformations(StarshipEnum.Star_Destroyer);
                     Console.WriteLine(startshipInformations);
                     break;
                 case 1:
@@ -49,17 +51,21 @@ namespace Application.ExploreStarshipsApplication
                     Console.WriteLine(startshipInformations1);
                     break;
                 case 2:
-                    var startshipInformations2 = await GetInformations(StarshipEnum.Death_Star);
+                    var startshipInformations2 = await GetInformations(StarshipEnum.Millennium_Falcon);
                     Console.WriteLine(startshipInformations2);
                     break;
                 case 3:
-                    var startshipInformations3 = await GetInformations(StarshipEnum.Death_Star);
+                    var startshipInformations3 = await GetInformations(StarshipEnum.Executor);
                     Console.WriteLine(startshipInformations3);
                     break;
                 default:
                     break;
             }
-            return;
+            Console.WriteLine("Press any key to continue... or SPACE to exit");
+            var key = Console.ReadKey();
+            if (key.Key == ConsoleKey.Spacebar)
+                return false;
+            return true;
         }
 
         public async Task<string> GetInformations(StarshipEnum starshipEnum)
@@ -96,16 +102,8 @@ namespace Application.ExploreStarshipsApplication
                 buffer.Append("Max_atmosphering_speed: " + startshipInformation.Max_atmosphering_speed + "\n");
             
             buffer.Append("Cargo_capacity: " + startshipInformation.Cargo_capacity + "\n");
-            buffer.Append("qtdFamousPilots: " + startshipInformation.qtdFamousPilots + "\n");
 
             return buffer.ToString();
-        }
-
-        private void ExitGame()
-        {
-            WriteLine("\n Press any key to exit...");
-            ReadKey(true);
-            Environment.Exit(0);
         }
     }
 }
