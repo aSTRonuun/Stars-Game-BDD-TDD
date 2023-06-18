@@ -9,14 +9,14 @@ namespace UnitTests.ApplicationTest.ExploreStarshipsApplicationTests
 {
     public class ExploreStartshipsTests
     {
-        private Mock<IStarshipInformationService> _starshipInformationService;
+        private Mock<IStarshipInformationService> _starshipInformationsServiceMock;
         private ExploreStarships _exploreStarships;
 
         [SetUp]
         public void Setup()
         {
-            _starshipInformationService = new Mock<IStarshipInformationService>();
-            _exploreStarships = new ExploreStarships(_starshipInformationService.Object);
+            _starshipInformationsServiceMock = new Mock<IStarshipInformationService>();
+            _exploreStarships = new ExploreStarships(_starshipInformationsServiceMock.Object);
         }
 
         [Test]
@@ -27,7 +27,7 @@ namespace UnitTests.ApplicationTest.ExploreStarshipsApplicationTests
             
             var id = 9;
             
-            _starshipInformationService.Setup(x => x.GetBydId(id)).ReturnsAsync((StarshipsInformations)null);
+            _starshipInformationsServiceMock.Setup(x => x.GetBydId(id)).ReturnsAsync((StarshipsInformations)null);
             
             var expectStringError = "Não foi possível resgatar as informações, tente novamente!";
 
@@ -69,7 +69,7 @@ namespace UnitTests.ApplicationTest.ExploreStarshipsApplicationTests
                                "Max atmosphering speed: 500000\n" +
                                "Cargo capacity: 1000000000000\n";
             
-            _starshipInformationService.Setup(x => x.GetBydId(id))
+            _starshipInformationsServiceMock.Setup(x => x.GetBydId(id))
                 .ReturnsAsync(starshipResult);
             
             // Action
@@ -111,7 +111,7 @@ namespace UnitTests.ApplicationTest.ExploreStarshipsApplicationTests
                                "Max atmosphering speed: 0\n" +
                                "Cargo capacity: 1000000000000\n";
             
-            _starshipInformationService.Setup(x => x.GetBydId(id))
+            _starshipInformationsServiceMock.Setup(x => x.GetBydId(id))
                 .ReturnsAsync(starshipResult);
             
             // Action
@@ -153,7 +153,7 @@ namespace UnitTests.ApplicationTest.ExploreStarshipsApplicationTests
                                "Max atmosphering speed: 0\n" +
                                "Cargo capacity: 1000000000000\n";
             
-            _starshipInformationService.Setup(x => x.GetBydId(id))
+            _starshipInformationsServiceMock.Setup(x => x.GetBydId(id))
                 .ReturnsAsync(starshipResult);
             
             // Action

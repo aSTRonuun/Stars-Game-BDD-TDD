@@ -2,7 +2,6 @@
 using Domain.BoardDomain.Enums;
 using Domain.BoardDomain.Exceptions;
 using Domain.GameDomain.Entities;
-using Domain.PlayerDomain.Entites;
 using Domain.ShipDomain.Enuns;
 using NUnit.Framework;
 
