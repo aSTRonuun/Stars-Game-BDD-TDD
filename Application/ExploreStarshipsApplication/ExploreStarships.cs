@@ -84,26 +84,35 @@ namespace Application.ExploreStarshipsApplication
         {
             var buffer = new StringBuilder();
 
-            buffer.Append("Name: " + startshipInformation.Name + "\n");
-            buffer.Append("Model: " + startshipInformation.Model + "\n");
-            buffer.Append("Starship_class: " + startshipInformation.Starship_class + "\n");
-            buffer.Append("Manufacturer: " + startshipInformation.Manufacturer + "\n");
-            buffer.Append("Cost_in_credits: " + startshipInformation.Cost_in_credits + "\n");
-            buffer.Append("Crew: " + startshipInformation.Crew + "\n");
+            buffer.Append("\n ⭐ 🚀 Starship Informations: 🚀 ⭐\n");
+            buffer.Append("Name: " + VerifyNullOrEmpty(startshipInformation.Name) + "\n");
+            buffer.Append("Model: " + VerifyNullOrEmpty(startshipInformation.Model) + "\n");
+            buffer.Append("Starship class: " + VerifyNullOrEmpty(startshipInformation.Starship_class) + "\n");
+            buffer.Append("Manufacturer: " + VerifyNullOrEmpty(startshipInformation.Manufacturer) + "\n");
+            buffer.Append("Cost in credits: " + VerifyNullOrEmpty(startshipInformation.Cost_in_credits) + "\n");
+            buffer.Append("Crew: " + (startshipInformation.Crew) + "\n");
             
-            if (startshipInformation.Passengers == "n/a")
+            if (VerifyNullOrEmpty(startshipInformation.Passengers) == "n/a")
                 buffer.Append("Passengers: " + "0" + "\n");
             else
                 buffer.Append("Passengers: " + startshipInformation.Passengers + "\n");
 
-            if (startshipInformation.Max_atmosphering_speed == "n/a")
-                buffer.Append("Max_atmosphering_speed: " + "0" + "\n");
+            if (VerifyNullOrEmpty(startshipInformation.Max_atmosphering_speed) == "n/a")
+                buffer.Append("Max atmosphering speed: " + "0" + "\n");
             else
-                buffer.Append("Max_atmosphering_speed: " + startshipInformation.Max_atmosphering_speed + "\n");
+                buffer.Append("Max atmosphering speed: " + startshipInformation.Max_atmosphering_speed + "\n");
             
-            buffer.Append("Cargo_capacity: " + startshipInformation.Cargo_capacity + "\n");
+            buffer.Append("Cargo capacity: " + VerifyNullOrEmpty(startshipInformation.Cargo_capacity) + "\n");
 
             return buffer.ToString();
         }
+        
+        private string VerifyNullOrEmpty(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return "Not informed";
+            return value;
+        }
+        
     }
 }

@@ -58,15 +58,16 @@ namespace UnitTests.ApplicationTest.ExploreStarshipsApplicationTests
                 Starship_class = "Deep Space Mobile Battlestation"
             };
             
-            var expectString = "Name: Death Star\n" +
+            var expectString = "\n ⭐ 🚀 Starship Informations: 🚀 ⭐\n" +
+                               "Name: Death Star\n" +
                                "Model: DS-1 Orbital Battle Station\n" +
-                               "Starship_class: Deep Space Mobile Battlestation\n" +
+                               "Starship class: Deep Space Mobile Battlestation\n" +
                                "Manufacturer: Imperial Department of Military Research, Sienar Fleet Systems\n" +
-                               "Cost_in_credits: 1000000000000\n" +
+                               "Cost in credits: 1000000000000\n" +
                                "Crew: 342953\n" +
                                "Passengers: 0\n" +
-                               "Max_atmosphering_speed: 500000\n" +
-                               "Cargo_capacity: 1000000000000\n";
+                               "Max atmosphering speed: 500000\n" +
+                               "Cargo capacity: 1000000000000\n";
             
             _starshipInformationService.Setup(x => x.GetBydId(id))
                 .ReturnsAsync(starshipResult);
@@ -99,15 +100,58 @@ namespace UnitTests.ApplicationTest.ExploreStarshipsApplicationTests
                 Starship_class = "Deep Space Mobile Battlestation"
             };
             
-            var expectString = "Name: Death Star\n" +
+            var expectString = "\n ⭐ 🚀 Starship Informations: 🚀 ⭐\n" +
+                               "Name: Death Star\n" +
                                "Model: DS-1 Orbital Battle Station\n" +
-                               "Starship_class: Deep Space Mobile Battlestation\n" +
+                               "Starship class: Deep Space Mobile Battlestation\n" +
                                "Manufacturer: Imperial Department of Military Research, Sienar Fleet Systems\n" +
-                               "Cost_in_credits: 1000000000000\n" +
+                               "Cost in credits: 1000000000000\n" +
                                "Crew: 342953\n" +
                                "Passengers: 843342\n" +
-                               "Max_atmosphering_speed: 0\n" +
-                               "Cargo_capacity: 1000000000000\n";
+                               "Max atmosphering speed: 0\n" +
+                               "Cargo capacity: 1000000000000\n";
+            
+            _starshipInformationService.Setup(x => x.GetBydId(id))
+                .ReturnsAsync(starshipResult);
+            
+            // Action
+            
+            var result = await _exploreStarships.GetInformations(StarshipEnum.Death_Star);
+            
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(expectString, result);
+        }
+        
+        [Test]
+        public async Task GetInformations_WhenSomePropertyIsNullOrEmpty_ShouldBeReturnedFormatted()
+        {
+            // Arrange
+            var id = 9;
+            
+            var starshipResult = new StarshipsInformations
+            {
+                Name = "Death Star",
+                Model = "DS-1 Orbital Battle Station",
+                Manufacturer = "Imperial Department of Military Research, Sienar Fleet Systems",
+                Cost_in_credits = "",
+                Crew = "342953",
+                Passengers = "843342",
+                Cargo_capacity = "1000000000000",
+                Max_atmosphering_speed = "n/a",
+                Starship_class = null
+            };
+            
+            var expectString = "\n ⭐ 🚀 Starship Informations: 🚀 ⭐\n" +
+                               "Name: Death Star\n" +
+                               "Model: DS-1 Orbital Battle Station\n" +
+                               "Starship class: Not informed\n" +
+                               "Manufacturer: Imperial Department of Military Research, Sienar Fleet Systems\n" +
+                               "Cost in credits: Not informed\n" +
+                               "Crew: 342953\n" +
+                               "Passengers: 843342\n" +
+                               "Max atmosphering speed: 0\n" +
+                               "Cargo capacity: 1000000000000\n";
             
             _starshipInformationService.Setup(x => x.GetBydId(id))
                 .ReturnsAsync(starshipResult);
